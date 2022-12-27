@@ -271,21 +271,20 @@ def run():
                 print(f"Letters: {all_of_letters}\nLength: {length_of_words}")
 
                 with open('Generator_dictionaries/russian_nouns_without_io.txt', encoding='utf-8') as f1:
-                    number_of_words_txt = 51243
                     result = [f"Words from {length_of_words} letters:"]
                     count_words = 0
-                    for i in range(1, number_of_words_txt):
+                    line = ""
+                    while line != "-----":
                         line = f1.readline()
                         if "\n" in line:
                             line = line[:-1]
-                        if len(line) == length_of_words:
+                        if len(line) == length_of_words and line != "" and line != "-----":
                             count = 0
                             for letter in line:
                                 if letter in all_of_letters and line.count(letter) <= all_of_letters.count(letter):
                                     count += 1
                             if count == length_of_words and line not in result:
                                 result.append(line)
-
                     if is_app:
                         dpg.delete_item('text_group', children_only=True)
                         left_pos = 8

@@ -225,6 +225,13 @@ def run():
         with dpg.texture_registry():
             dpg.add_static_texture(width, height, data, tag="image_1", parent="generator_group")
 
+        def update_word_list():
+            try:
+                os.remove(f"{os.getcwd()}/{files_data[2][2]}/{files_data[2][0]}")
+            except FileNotFoundError:
+                pass
+            check_file(file=files_data[2][0], url=files_data[2][1], folder=files_data[2][2])
+
         def gen_value():
             def generator_process(all_of_letters: str, length_of_words: int):
                 is_app = True
@@ -307,7 +314,6 @@ def run():
                             else:
                                 print(line)
                     print(f"Count of words: {count_words}")
-
             print_name_def("generator_ru_words()")
             letters_get = dpg.get_value('Input all letters')
             length_get = dpg.get_value('Input length of words')
@@ -316,6 +322,11 @@ def run():
             generator_process(all_of_letters=letters_get, length_of_words=length_get)
 
         combo_values = ["3", "4", "5", "6", "7"]
+        dpg.add_text(tag="Text 'Update'", pos=[15, 245], default_value="Update", parent="generator_group")
+        dpg.add_text(tag="Text 'word'", pos=[20, 275], default_value="word", parent="generator_group")
+        dpg.add_text(tag="Text 'list'", pos=[25, 305], default_value="list", parent="generator_group")
+        dpg.add_button(tag="Button for update word list", label="Update", callback=update_word_list, pos=[10, 335],
+                       parent="generator_group")
         dpg.add_text(tag="Text for writing letters", pos=[290, 215],
                      default_value="Write all of letters which do you have:", parent="generator_group")
         dpg.add_input_text(tag="Input all letters", width=270, height=300, pos=[284, 245], parent="generator_group")

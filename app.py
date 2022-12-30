@@ -226,6 +226,7 @@ def run():
             dpg.add_static_texture(width, height, data, tag="image_1", parent="generator_group")
 
         def update_word_list():
+            print_name_def("update_word_list()")
             try:
                 os.remove(f"{os.getcwd()}/{files_data[2][2]}/{files_data[2][0]}")
             except FileNotFoundError:

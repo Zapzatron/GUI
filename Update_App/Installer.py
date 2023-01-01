@@ -88,18 +88,6 @@ def transfer_folders_files(path_from: str, path_to: str, black_list: list = None
                 # os.rename(f"{path_from}/{item}", f"{path_to}/{item}")
             else:
                 os.rename(f"{path_from}/{item}", f"{path_to}/{item}")
-            # shutil.copy2(f"{transfer_from}/{item}", f"{transfer_to}/{item}")
-            # shutil.copy(f"{transfer_from}/{item}", f"{transfer_to}")
-            # if os.path.isdir(transfer_from):
-            #     delete_folder(f"{transfer_from}/{item}")
-            # else:
-            #     delete_file(f"{transfer_from}/{item}")
-        # else:
-        #     os.rename(f"{path_from}/{item}", f"{black_path_to}/{item}")
-            # if os.path.isdir(transfer_from):
-            #     delete_folder(f"{transfer_from}/{item}")
-            # else:
-            #     delete_file(f"{transfer_from}/{item}")
 
 
 def get_zip(file, url):
@@ -148,25 +136,24 @@ while agree != "":
     if agree == "exit":
         exit()
 common_path = r"C:\superior6564"
+
+with open(r"C:\superior6564\path_app.txt", "w") as path_file:
+    path_file.write(common_path)
+
 print("Deleting previous application.")
-# delete_folder(r"C:\superior6564\superior6564App-master")
-# clear_catalog(r"C:\superior6564\superior6564App-master")
 clear_catalog(f"{common_path}/temp")
 clear_catalog(f"{common_path}/superior6564App")
-# clear_catalog(f"{common_path}/superior6564AppUpdater")
 delete_file(f"{winshell.desktop()}/superior6564App.lnk", )
 delete_file(f"{winshell.desktop()}/Update.lnk", )
 delete_zip("superior6564App.zip")
-# print("Please wait for the app to install. It takes less than a minute.")
 get_zip("superior6564App.zip", "https://github.com/Superior-GitHub/superior6564App/archive/refs/heads/master.zip")
-# extract_zip("superior6564App.zip", r"C:\superior6564\temp")
 extract_zip("superior6564App.zip", f"{common_path}/temp")
-transfer_folders_files(f"{common_path}\\temp\\superior6564App-master",
-                       f"{common_path}\\superior6564App",
-                       ["Update.bat", "Update_files", "Update_Updater.bat", "Update_Updater"],
-                       f"{common_path}\\superior6564AppUpdater")
+transfer_folders_files(f"{common_path}/temp/superior6564App-master",
+                       f"{common_path}/superior6564App",
+                       ["Update.bat", "Update_App", "Update_Updater.bat", "Update_Updater"],
+                       f"{common_path}/superior6564AppUpdater")
 create_shortcut("superior6564App.lnk", "GeneratorRUWords.bat", "Photos_or_Icons/degget_6564.ico", f"{common_path}/superior6564App")
-path = f"{common_path}\\temp\\superior6564App-master\\Update_Updater.bat"
+path = f"{common_path}/temp/superior6564App-master/Update_Updater.bat"
 subprocess.Popen(path)
 # create_shortcut("Update.lnk", f"Update.bat", "Photos_or_Icons/degget_6564.ico", os.getcwd())
 # print("Finish.")

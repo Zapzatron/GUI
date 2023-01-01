@@ -64,7 +64,7 @@ with open(r"C:\superior6564\path_app.txt", "r") as path_file:
     common_path = path_file.readline()
 # common_path = r"C:\superior6564"
 clear_catalog(f"{common_path}/superior6564AppUpdater")
-transfer_folders_files(f"{common_path}\\temp\\superior6564App-master", f"{common_path}\\superior6564AppUpdater")
+transfer_folders_files(f"{common_path}/temp/superior6564App-master", f"{common_path}/superior6564AppUpdater")
 create_shortcut("Update.lnk", f"Update.bat", "Photos_or_Icons/degget_6564.ico", f"{common_path}/superior6564App")
 print("Finish.")
 kill_process(10)

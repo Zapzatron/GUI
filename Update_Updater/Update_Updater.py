@@ -30,15 +30,32 @@ def clear_catalog(path):
             os.remove(s)
 
 
+def copytree(path_from, path_to, symlinks=False, ignore=None):
+    if not os.path.exists(path_to):
+        os.makedirs(path_to)
+    for item in os.listdir(path_from):
+        # s = os.path.join(path_from, item)
+        s = f"{path_from}/{item}"
+        # d = os.path.join(path_to, item)
+        d = f"{path_to}/{item}"
+        if os.path.isdir(s):
+            copytree(s, d, symlinks, ignore)
+        else:
+            if not os.path.exists(d) or os.stat(s).st_mtime - os.stat(d).st_mtime > 1:
+                shutil.copy2(s, d)
+
+
 def transfer_folders_files(path_from: str, path_to: str):
     print(f"Transfer folders and files from temp.")
-    full_list = os.listdir(path_from)
+    # full_list = os.listdir(path_from)
     # print(full_list)
-    for item in full_list:
-        if item == "Python3109" or item == "Update_Updater" or item == "Update_App":
-            shutil.copytree(f"{path_from}/{item}", f"{path_to}/{item}", symlinks=False, ignore=None)
-        elif item == "Update_Updater.bat" or item == "Update.bat":
-            shutil.copyfile(f"{path_from}/{item}", f"{path_to}/{item}")
+    # for item in full_list:
+    copytree(path_from, path_to)
+    # if os.path.isdir(item):
+    # if item == "Python3109" or item == "Update_Updater" or item == "Update_App":
+    #     shutil.copytree(f"{path_from}/{item}", f"{path_to}/{item}", symlinks=False, ignore=None)
+    # elif item == "Update_Updater.bat" or item == "Update.bat":
+    #     shutil.copyfile(f"{path_from}/{item}", f"{path_to}/{item}")
 
 
 def create_shortcut(file, target, icon, work_dir):

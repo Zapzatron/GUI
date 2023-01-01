@@ -75,14 +75,18 @@ def transfer_folders_files(path_from: str, path_to: str, black_list: list = None
         if item not in black_list:
             # print(item)
             if item == "Python3109":
-                def copytree(src, dst, symlinks=False, ignore=None):
-                    for item in os.listdir(src):
-                        s = os.path.join(src, item)
-                        d = os.path.join(dst, item)
-                        if os.path.isdir(s):
-                            shutil.copytree(s, d, symlinks, ignore)
-                        else:
-                            shutil.copy2(s, d)
+                # def copytree(src, dst, symlinks=False, ignore=None):
+                #     if not os.path.exists(dst):
+                #         os.makedirs(dst)
+                #     for item in os.listdir(src):
+                #         s = os.path.join(src, item)
+                #         d = os.path.join(dst, item)
+                #         if os.path.isdir(s):
+                #             copytree(s, d, symlinks, ignore)
+                #         else:
+                #             if not os.path.exists(d) or os.stat(s).st_mtime - os.stat(d).st_mtime > 1:
+                #                 shutil.copy2(s, d)
+
                 # copytree(f"{path_from}/{item}", f"{black_path_to}/{item}")
                 # copytree(f"{path_from}/{item}", f"{path_to}/{item}")
                 shutil.copytree(f"{path_from}/{item}", f"{path_to}/{item}", symlinks=False, ignore=None)

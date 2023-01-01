@@ -67,7 +67,8 @@ def clear_catalog(path):
         pass
 
 
-def transfer_folders_files(path_from: str, path_to: str, black_list: list = None,  black_path_to: str = None):
+def transfer_folders_files(path_from: str, path_to: str, black_list: list = None):
+    print(f"Transfer folders and files from temp.")
     full_list = os.listdir(path_from)
     # print(full_list)
     for item in full_list:
@@ -135,9 +136,9 @@ while agree != "":
     agree = input("Press 'enter' to continue or write 'exit' to exit: ")
     if agree == "exit":
         exit()
-common_path = r"C:\superior6564"
+common_path = "C:/superior6564"
 
-with open(r"C:\superior6564\path_app.txt", "w") as path_file:
+with open("C:/superior6564/path_app.txt", "w") as path_file:
     path_file.write(common_path)
 
 print("Deleting previous application.")
@@ -150,8 +151,7 @@ get_zip("superior6564App.zip", "https://github.com/Superior-GitHub/superior6564A
 extract_zip("superior6564App.zip", f"{common_path}/temp")
 transfer_folders_files(f"{common_path}/temp/superior6564App-master",
                        f"{common_path}/superior6564App",
-                       ["Update.bat", "Update_App", "Update_Updater.bat", "Update_Updater"],
-                       f"{common_path}/superior6564AppUpdater")
+                       ["Update.bat", "Update_App", "Update_Updater.bat", "Update_Updater"])
 create_shortcut("superior6564App.lnk", "GeneratorRUWords.bat", "Photos_or_Icons/degget_6564.ico", f"{common_path}/superior6564App")
 path = f"{common_path}/temp/superior6564App-master/Update_Updater.bat"
 subprocess.Popen(path)

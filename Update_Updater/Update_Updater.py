@@ -14,35 +14,30 @@ def kill_process(seconds):
 
 
 def clear_catalog(path):
-    try:
-        file_list = os.listdir(path)
-        # print(file_list)
-        for item in file_list:
-            # print(item)
-            # if item != "Python3109" and item != "Update.bat" and item != "Update_files":
-            s = os.path.join(path, item)
-            if os.path.isdir(s):
-                try:
-                    shutil.rmtree(s)
-                except OSError as e:
-                    pass
-                    # print("Error: %s - %s." % (e.filename, e.strerror))
-            else:
-                os.remove(s)
-    except FileNotFoundError:
-        pass
+    file_list = os.listdir(path)
+    # print(file_list)
+    for item in file_list:
+        # print(item)
+        # if item != "Python3109" and item != "Update.bat" and item != "Update_files":
+        s = os.path.join(path, item)
+        if os.path.isdir(s):
+            try:
+                shutil.rmtree(s)
+            except OSError as e:
+                pass
+                # print("Error: %s - %s." % (e.filename, e.strerror))
+        else:
+            os.remove(s)
 
 
 def transfer_folders_files(path_from: str, path_to: str):
-
+    print(f"Transfer folders and files from temp.")
     full_list = os.listdir(path_from)
     # print(full_list)
     for item in full_list:
-        if item == "Python3109" or item == "Update_Updater":
+        if item == "Python3109" or item == "Update_Updater" or item == "Update_App":
             shutil.copytree(f"{path_from}/{item}", f"{path_to}/{item}", symlinks=False, ignore=None)
-        elif item == "Update_App" or item == "Update.bat":
-            os.rename(f"{path_from}/{item}", f"{path_to}/{item}")
-        elif item == "Update_Updater.bat":
+        elif item == "Update_Updater.bat" or item == "Update.bat":
             shutil.copyfile(f"{path_from}/{item}", f"{path_to}/{item}")
 
 
@@ -60,8 +55,13 @@ def create_shortcut(file, target, icon, work_dir):
     shortcut.save()
 
 
-with open(r"C:\superior6564\path_app.txt", "r") as path_file:
+with open("C:/superior6564/path_app.txt", "r") as path_file:
     common_path = path_file.readline()
+
+# print(common_path)
+# print(f"{common_path}/superior6564AppUpdater")
+# exit()
+
 # common_path = r"C:\superior6564"
 clear_catalog(f"{common_path}/superior6564AppUpdater")
 transfer_folders_files(f"{common_path}/temp/superior6564App-master", f"{common_path}/superior6564AppUpdater")

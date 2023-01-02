@@ -103,7 +103,8 @@ clear_catalog(f"{common_path}/superior6564/superior6564AppUpdater")
 transfer_folders_files(f"{common_path}/superior6564/temp/superior6564App-master",
                        f"{common_path}/superior6564/superior6564AppUpdater",
                        ["Update.bat", "Update_App", "Update_Updater.bat", "Update_Updater",
-                        "Python3109.zip", "Check_Packages.py", "Installer.py", "Update_Updater.py"])
-create_shortcut("Update.lnk", f"Update.bat", "Photos_or_Icons/degget_6564.ico", f"{common_path}/superior6564/superior6564App", f"{common_path}/superior6564/superior6564AppUpdater")
+                        "Python3109.zip", "Check_Packages.py", "Installer.py", "Update_Updater.py",
+                        "Photos_or_Icons", "degget_6564.ico"])
+create_shortcut("Update.lnk", f"Update.bat", "Photos_or_Icons/degget_6564.ico", f"{common_path}/superior6564/superior6564AppUpdater", f"{common_path}/superior6564/superior6564AppUpdater")
 print("Finish.")
 kill_process(10)

@@ -108,11 +108,14 @@ def extract_zip(file, path):
     time.sleep(5)
 
 
-def create_shortcut(file, target, icon, work_dir):
+def create_shortcut(file, target, icon, work_dir, target_dir=None):
     print(f"Creating shortcut of {file[:-4]} to Desktop.")
     desktop = winshell.desktop()
     path = os.path.join(desktop, file)
-    target = f"{work_dir}/{target}"
+    if target_dir is None:
+        target = f"{work_dir}/{target}"
+    else:
+        target = f"{target_dir}/{target}"
     icon = f"{work_dir}/{icon}"
     shell = Dispatch('WScript.Shell')
     shortcut = shell.CreateShortCut(path)

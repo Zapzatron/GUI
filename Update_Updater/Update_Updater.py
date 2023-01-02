@@ -34,6 +34,7 @@ def copytree(path_from, path_to, symlinks=False, ignore=None):
     if not os.path.exists(path_to):
         os.makedirs(path_to)
     for item in os.listdir(path_from):
+        # print(item)
         # s = os.path.join(path_from, item)
         s = f"{path_from}/{item}"
         # d = os.path.join(path_to, item)
@@ -51,6 +52,7 @@ def transfer_folders_files(path_from: str, path_to: str):
     # print(full_list)
     # for item in full_list:
     copytree(path_from, path_to)
+    time.sleep(5)
     # if os.path.isdir(item):
     # if item == "Python3109" or item == "Update_Updater" or item == "Update_App":
     #     shutil.copytree(f"{path_from}/{item}", f"{path_to}/{item}", symlinks=False, ignore=None)
@@ -58,11 +60,14 @@ def transfer_folders_files(path_from: str, path_to: str):
     #     shutil.copyfile(f"{path_from}/{item}", f"{path_to}/{item}")
 
 
-def create_shortcut(file, target, icon, work_dir):
+def create_shortcut(file, target, icon, work_dir, target_dir=None):
     print(f"Creating shortcut of {file[:-4]} to Desktop.")
     desktop = winshell.desktop()
     path = os.path.join(desktop, file)
-    target = f"{work_dir}/{target}"
+    if target_dir is None:
+        target = f"{work_dir}/{target}"
+    else:
+        target = f"{target_dir}/{target}"
     icon = f"{work_dir}/{icon}"
     shell = Dispatch('WScript.Shell')
     shortcut = shell.CreateShortCut(path)
@@ -82,6 +87,6 @@ with open("C:/superior6564/path_app.txt", "r") as path_file:
 # common_path = r"C:\superior6564"
 clear_catalog(f"{common_path}/superior6564AppUpdater")
 transfer_folders_files(f"{common_path}/temp/superior6564App-master", f"{common_path}/superior6564AppUpdater")
-create_shortcut("Update.lnk", f"Update.bat", "Photos_or_Icons/degget_6564.ico", f"{common_path}/superior6564App")
+create_shortcut("Update.lnk", f"Update.bat", "Photos_or_Icons/degget_6564.ico", f"{common_path}/superior6564App", f"{common_path}/superior6564AppUpdater")
 print("Finish.")
 kill_process(10)

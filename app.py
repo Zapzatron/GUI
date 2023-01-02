@@ -53,6 +53,7 @@ def run():
                         pass
                 with open(file_path, "wb") as new_file:
                     new_file.write(requests.get(url).content)
+                    print(f"{file} installed.")
             elif not check_internet():
                 print(f"{file} is not okay.")
                 print("You don`t have files I need. I can`t let you go any further.")

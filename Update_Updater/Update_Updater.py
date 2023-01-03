@@ -34,7 +34,7 @@ def clear_catalog(path):
 
 
 def extract_zip(file, path):
-    print(f"Extract the zip file to {path}.")
+    print(f"Extract {file} to {path}.")
     with zipfile.ZipFile(file, 'r') as zip_file:
         zip_file.extractall(path)
     time.sleep(5)

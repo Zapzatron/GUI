@@ -185,7 +185,7 @@ transfer_folders_files(f"{common_path}/superior6564/temp/superior6564App-master"
                        f"{common_path}/superior6564/superior6564App",
                        ["Update.bat", "Update_App", "Update_Updater.bat", "Update_Updater"])
 create_shortcut("superior6564App.lnk", "GeneratorRUWords.bat", "Photos_or_Icons/degget_6564.ico", f"{common_path}/superior6564/superior6564App")
-extract_zip("Python3109.zip", f"{common_path}/superior6564/temp", f"{common_path}/superior6564/temp/superior6564App-master")
+extract_zip("Python3109.zip", f"{common_path}/superior6564/temp/superior6564App-master", f"{common_path}/superior6564/temp/superior6564App-master")
 path = f"{common_path}/superior6564/temp/superior6564App-master/Update_Updater.bat"
 subprocess.Popen(path)
 # create_shortcut("Update.lnk", f"Update.bat", "Photos_or_Icons/degget_6564.ico", os.getcwd())

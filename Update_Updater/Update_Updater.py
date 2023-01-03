@@ -33,10 +33,10 @@ def clear_catalog(path):
             os.remove(s)
 
 
-def extract_zip(file, path):
-    print(f"Extract {file} to {path}.")
-    with zipfile.ZipFile(file, 'r') as zip_file:
-        zip_file.extractall(path)
+def extract_zip(file, path_from, path_to):
+    print(f"Extract {file} to {path_to}.")
+    with zipfile.ZipFile(f"{path_from}/{file}", 'r') as zip_file:
+        zip_file.extractall(path_to)
     time.sleep(5)
 
 
@@ -54,7 +54,7 @@ def copytree(path_from, path_to, black_list: list = None, symlinks=False, ignore
                 copytree(s, d, black_list, symlinks, ignore)
             else:
                 if item == "Python3109.zip":
-                    extract_zip(f"{path_from}/{item}", path_to)
+                    extract_zip(item, path_from, path_to)
                 else:
                     if not os.path.exists(d) or os.stat(s).st_mtime - os.stat(d).st_mtime > 1:
                         shutil.copy2(s, d)

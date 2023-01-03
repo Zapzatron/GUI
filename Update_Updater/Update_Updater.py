@@ -106,5 +106,6 @@ transfer_folders_files(f"{common_path}/superior6564/temp/superior6564App-master"
                         "Python3109.zip", "Check_Packages.py", "Installer.py", "Update_Updater.py",
                         "Photos_or_Icons", "degget_6564.ico"])
 create_shortcut("Update.lnk", f"Update.bat", "Photos_or_Icons/degget_6564.ico", f"{common_path}/superior6564/superior6564AppUpdater", f"{common_path}/superior6564/superior6564AppUpdater")
+clear_catalog(f"{common_path}/superior6564/temp")
 print("Finish.")
 kill_process(10)

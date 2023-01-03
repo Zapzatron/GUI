@@ -171,20 +171,29 @@ while agree != "":
 default_path = "C:/"
 common_path = ""
 while agree != "+" or agree != "-":
-    agree = input("Do you want to change path for app?\nWrite '+' to change or '-' to don`t change: ")
+    path_app = "C:/superior6564/path_app.txt"
+    agree = input(f"Default path is {default_path}\nDo you want to change path for app?\nWrite '+' to change or '-' to don`t change: ")
     if agree == "+":
         common_path = tkinter.filedialog.askdirectory(initialdir=default_path, title="Choose directory")
+        check_previous_path = ""
+        if os.path.exists(path_app):
+            with open(path_app, "r") as path_file:
+                check_previous_path = path_file.readline()
+            if common_path != check_previous_path:
+                clear_catalog(f"{check_previous_path}/superior6564")
         if not os.path.exists("C:/superior6564"):
             os.makedirs("C:/superior6564")
-        with open("C:/superior6564/path_app.txt", "w") as path_file:
+        with open(path_app, "w") as path_file:
             path_file.write(common_path)
+        break
     elif agree == "-":
-        path_app = "C:/superior6564/path_app.txt"
         if os.path.exists(path_app):
             with open(path_app, "r") as path_file:
                 common_path = path_file.readline()
-        else:
-            common_path = default_path
+        break
+    else:
+        common_path = default_path
+        break
 
 print("Deleting previous application.")
 clear_catalog(f"{common_path}/superior6564/temp")

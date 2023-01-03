@@ -72,10 +72,10 @@ def get_zip(file, url):
         new_file.write(requests.get(url).content)
 
 
-def extract_zip(file, path):
-    print(f"Extract the zip file to {path}.")
-    with zipfile.ZipFile(file, 'r') as zip_file:
-        zip_file.extractall(path)
+def extract_zip(file, path_from, path_to):
+    print(f"Extract the zip file to {path_to}.")
+    with zipfile.ZipFile(f"{path_from}/{file}", 'r') as zip_file:
+        zip_file.extractall(path_to)
     time.sleep(5)
 
 
@@ -93,7 +93,7 @@ def copytree(path_from, path_to, black_list: list = None, symlinks=False, ignore
                 copytree(s, d, black_list, symlinks, ignore)
             else:
                 if item == "Python3109.zip":
-                    extract_zip(f"{path_from}/{item}", path_to)
+                    extract_zip(item, path_from, path_to)
                 else:
                     if not os.path.exists(d) or os.stat(s).st_mtime - os.stat(d).st_mtime > 1:
                         shutil.copy2(s, d)
@@ -180,12 +180,12 @@ delete_file(f"{winshell.desktop()}/superior6564App.lnk", )
 delete_file(f"{winshell.desktop()}/Update.lnk", )
 delete_zip("superior6564App.zip")
 get_zip("superior6564App.zip", "https://github.com/Superior-GitHub/superior6564App/archive/refs/heads/master.zip")
-extract_zip("superior6564App.zip", f"{common_path}/superior6564/temp")
+extract_zip("superior6564App.zip", os.getcwd(), f"{common_path}/superior6564/temp")
 transfer_folders_files(f"{common_path}/superior6564/temp/superior6564App-master",
                        f"{common_path}/superior6564/superior6564App",
                        ["Update.bat", "Update_App", "Update_Updater.bat", "Update_Updater"])
 create_shortcut("superior6564App.lnk", "GeneratorRUWords.bat", "Photos_or_Icons/degget_6564.ico", f"{common_path}/superior6564/superior6564App")
-extract_zip("Python3109.zip", f"{common_path}/superior6564/temp/superior6564App-master")
+extract_zip("Python3109.zip", f"{common_path}/superior6564/temp", f"{common_path}/superior6564/temp/superior6564App-master")
 path = f"{common_path}/superior6564/temp/superior6564App-master/Update_Updater.bat"
 subprocess.Popen(path)
 # create_shortcut("Update.lnk", f"Update.bat", "Photos_or_Icons/degget_6564.ico", os.getcwd())

@@ -15,6 +15,7 @@ def try_import():
         import os
         import subprocess
         import winshell
+        import tkinter.filedialog
         from win32com.client import Dispatch
     except ModuleNotFoundError:
         print("You don`t have the packages I need. I can`t let you go any further.")
@@ -146,16 +147,17 @@ def create_shortcut(file, target, icon, work_dir, target_dir=None):
     shortcut.IconLocation = icon
     shortcut.save()
 
+import time
 
 try_import()
 
 import shutil
-import time
 import zipfile
 import requests
 import os
 import subprocess
 import winshell
+import tkinter.filedialog
 from win32com.client import Dispatch
 
 
@@ -165,13 +167,24 @@ while agree != "":
     agree = input("Press 'enter' to continue or write 'exit' to exit: ")
     if agree == "exit":
         exit()
-common_path = "C:/"
 
-if not os.path.exists("C:/superior6564"):
-    os.makedirs("C:/superior6564")
-
-with open("C:/superior6564/path_app.txt", "w") as path_file:
-    path_file.write(common_path)
+default_path = "C:/"
+common_path = ""
+while agree != "+" or agree != "-":
+    agree = input("Do you want to change path for app?\nWrite '+' to change or '-' to don`t change: ")
+    if agree == "+":
+        common_path = tkinter.filedialog.askdirectory(initialdir=default_path, title="Choose directory")
+        if not os.path.exists("C:/superior6564"):
+            os.makedirs("C:/superior6564")
+        with open("C:/superior6564/path_app.txt", "w") as path_file:
+            path_file.write(common_path)
+    elif agree == "-":
+        path_app = "C:/superior6564/path_app.txt"
+        if os.path.exists(path_app):
+            with open(path_app, "r") as path_file:
+                common_path = path_file.readline()
+        else:
+            common_path = default_path
 
 print("Deleting previous application.")
 clear_catalog(f"{common_path}/superior6564/temp")

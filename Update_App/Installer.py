@@ -168,13 +168,15 @@ while agree != "":
     if agree == "exit":
         exit()
 
-default_path = "C:/"
+default_path = "C:/superior6564"
 common_path = ""
 while agree != "+" or agree != "-":
     path_app = "C:/superior6564/path_app.txt"
     agree = input(f"Default path is {default_path}\nDo you want to change path for app?\nWrite '+' to change or '-' to don`t change: ")
     if agree == "+":
         common_path = tkinter.filedialog.askdirectory(initialdir=default_path, title="Choose directory")
+        if common_path != default_path:
+            common_path = f"{common_path}/superior6564"
         check_previous_path = ""
         if os.path.exists(path_app):
             with open(path_app, "r") as path_file:
@@ -196,19 +198,19 @@ while agree != "+" or agree != "-":
         break
 
 print("Deleting previous application.")
-clear_catalog(f"{common_path}/superior6564/temp")
-clear_catalog(f"{common_path}/superior6564/superior6564App")
+clear_catalog(f"{common_path}/temp")
+clear_catalog(f"{common_path}/superior6564App")
 delete_file(f"{winshell.desktop()}/superior6564App.lnk", )
 delete_file(f"{winshell.desktop()}/Update.lnk", )
 delete_zip("superior6564App.zip")
 get_zip("superior6564App.zip", "https://github.com/Superior-GitHub/superior6564App/archive/refs/heads/master.zip")
-extract_zip("superior6564App.zip", os.getcwd(), f"{common_path}/superior6564/temp")
-transfer_folders_files(f"{common_path}/superior6564/temp/superior6564App-master",
-                       f"{common_path}/superior6564/superior6564App",
+extract_zip("superior6564App.zip", os.getcwd(), f"{common_path}/temp")
+transfer_folders_files(f"{common_path}/temp/superior6564App-master",
+                       f"{common_path}/superior6564App",
                        ["Update.bat", "Update_App", "Update_Updater.bat", "Update_Updater"])
-create_shortcut("superior6564App.lnk", "GeneratorRUWords.bat", "Photos_or_Icons/degget_6564.ico", f"{common_path}/superior6564/superior6564App")
-extract_zip("Python3109.zip", f"{common_path}/superior6564/temp/superior6564App-master", f"{common_path}/superior6564/temp/superior6564App-master")
-path = f"{common_path}/superior6564/temp/superior6564App-master"
+create_shortcut("superior6564App.lnk", "GeneratorRUWords.bat", "Photos_or_Icons/degget_6564.ico", f"{common_path}/superior6564App")
+extract_zip("Python3109.zip", f"{common_path}/temp/superior6564App-master", f"{common_path}/temp/superior6564App-master")
+path = f"{common_path}/temp/superior6564App-master"
 os.chdir(path)
 subprocess.Popen("Update_Updater.bat")
 # create_shortcut("Update.lnk", f"Update.bat", "Photos_or_Icons/degget_6564.ico", os.getcwd())

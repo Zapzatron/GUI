@@ -71,7 +71,6 @@ def get_path_for_app(default_path, app_path):
     agree = " "
     common_path = ""
     while agree != "+" or agree != "-":
-        app_path = "C:/superior6564/path_app.txt"
         agree = input(f"Default path is {default_path}"
                       f"\nDo you want to change path for app?"
                       f"\nWrite '+' to change or '-' to don`t change: ")
@@ -94,11 +93,27 @@ def get_path_for_app(default_path, app_path):
             if os.path.exists(app_path):
                 with open(app_path, "r") as file_path:
                     common_path = file_path.readline()
-            break
-        else:
-            common_path = default_path
-            break
-    return common_path
+                break
+            else:
+                common_path = default_path
+                with open(app_path, "w") as file_path:
+                    file_path.write(common_path)
+                break
+
+    if agree != "-":
+        while agree != "" or agree != "-":
+            agree = input(f"App will install in {common_path}."
+                          f"\nDo you want to change path for app?"
+                          f"\nPress 'enter' to continue or '-' to change: ")
+
+            if agree == "":
+                break
+
+            if agree == "-":
+                common_path = get_path_for_app(default_path=default_path, app_path=app_path)
+                break
+
+    return common_path, agree
 
 
 def get_zip(file, url):
@@ -199,20 +214,23 @@ print("If an application was previously installed, it will be uninstalled and re
 agree = " "
 while agree != "":
     agree = input("Press 'enter' to continue or write 'exit' to exit: ")
+    if agree == "":
+        break
     if agree == "exit":
         exit()
 
 default_path = "C:/superior6564"
 app_path = "C:/superior6564/path_app.txt"
-common_path = get_path_for_app(default_path=default_path, app_path=app_path)
-
-while agree != "" or agree != "-":
-    agree = input(f"App will install in {common_path}."
-                  f"\nDo you want to change path for app?"
-                  f"\nPress 'enter' to continue or '-' to don`t change: ")
-    if agree == "-":
-        common_path = get_path_for_app(default_path=default_path, app_path=app_path)
-        break
+common_path, agree = get_path_for_app(default_path=default_path, app_path=app_path)
+# print(common_path, agree)
+# if agree != "-":
+#     while agree != "" or agree != "-":
+#         agree = input(f"App will install in {common_path}."
+#                       f"\nDo you want to change path for app?"
+#                       f"\nPress 'enter' to continue or '-' to don`t change: ")
+#         if agree == "-":
+#             common_path = get_path_for_app(default_path=default_path, app_path=app_path)
+#             break
 
 # while agree != "+" or agree != "-":
 #     path_app = "C:/superior6564/path_app.txt"

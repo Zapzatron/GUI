@@ -323,7 +323,7 @@ def run():
                 length_get = int(length_get)
             generator_process(all_of_letters=letters_get, length_of_words=length_get)
 
-        combo_values = ["3", "4", "5", "6", "7"]
+        combo_values = ["3", "4", "5", "6", "7", "8"]
         dpg.add_text(tag="Text 'Update'", pos=[15, 245], default_value="Update", parent="generator_group")
         dpg.add_text(tag="Text 'word'", pos=[20, 275], default_value="word", parent="generator_group")
         dpg.add_text(tag="Text 'list'", pos=[25, 305], default_value="list", parent="generator_group")

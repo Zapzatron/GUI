@@ -296,18 +296,21 @@ def run():
                                 result.append(line)
                     if is_app:
                         dpg.delete_item('text_group', children_only=True)
-                        left_pos = 8
-                        right_pos = 440
-                        count = 0
-                        for line in result[1:]:
-                            count_words += 1
-                            dpg.add_text(pos=[left_pos, right_pos], default_value=f"{count_words} word: {line}", parent='text_group')
-                            right_pos += 20
-                            count += 1
-                            if count == 8:
-                                count = 0
-                                left_pos += 160
-                                right_pos = 440
+                        if len(result) == 1:
+                            dpg.add_text(pos=[8, 435], default_value=f"No words found.", parent='text_group')
+                        else:
+                            left_pos = 8
+                            right_pos = 440
+                            count = 0
+                            for line in result[1:]:
+                                count_words += 1
+                                dpg.add_text(pos=[left_pos, right_pos], default_value=f"{count_words} word: {line}", parent='text_group')
+                                right_pos += 20
+                                count += 1
+                                if count == 8:
+                                    count = 0
+                                    left_pos += 160
+                                    right_pos = 440
                     else:
                         for line in result:
                             if line[:10] != "Words from":

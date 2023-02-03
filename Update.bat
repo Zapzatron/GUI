@@ -1,2 +1,2 @@
-Python3109\python.exe Update_App\Check_Packages.py
-Python3109\python.exe Update_App\Installer.py
+Python3109\python.exe Update/Run_Update.py
+pause

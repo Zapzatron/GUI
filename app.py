@@ -221,7 +221,7 @@ def run():
     def generator_ru_words():
         print_name_def("generator_ru_words()")
 
-        width, height, channels, data = dpg.load_image('Photos_or_Icons/degget_elite.jpg')
+        width, height, channels, data = dpg.load_image('Photos_or_Icons/degget_6564_App.jpg')
 
         with dpg.texture_registry():
             dpg.add_static_texture(width, height, data, tag="image_1", parent="generator_group")

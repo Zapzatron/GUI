@@ -1,14 +1,16 @@
 # print("Import Run_Update")
-import os
-import subprocess
 import Packages
-import Choice
-import Folders_and_Files as FaF
-import winshell
 
 Packages.check_req_packages() # Проверка нужных пакетов
 print()
 Packages.try_import() # Проверка импортов
+
+import os
+import subprocess
+import Choice
+import Folders_and_Files as FaF
+import winshell
+
 Choice.agree_for_run() # Предупреждение
 common_path = Choice.get_path_for_app() # Получение пути для приложения
 print("Deleting previous application.")

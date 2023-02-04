@@ -26,7 +26,7 @@ def get_path_for_app(default_path="C:/superior6564", app_path="C:/superior6564/p
             os.makedirs("C:/superior6564")
         if agree == "+":
             common_path = tkinter.filedialog.askdirectory(initialdir=default_path, title="Choose directory")
-            print(f"Выбранный путь: {common_path}")
+            # print(f"Выбранный путь: {common_path}")
             if common_path != default_path and common_path != "":
                 common_path = f"{common_path}/superior6564"
             elif common_path == "":

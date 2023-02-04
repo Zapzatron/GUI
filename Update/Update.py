@@ -1,4 +1,10 @@
 # print("Temp прогружен")
+import Packages
+
+Packages.check_req_packages() # Проверка нужных пакетов
+print()
+Packages.try_import() # Проверка импортов
+
 import Folders_and_Files as FaF
 import subprocess
 

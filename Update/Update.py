@@ -9,7 +9,7 @@ with open("C:/superior6564/path_app.txt", "r") as path_file:
 FaF.clear_folder(f"{common_path}/superior6564App")
 FaF.copy_folder_file(f"{common_path}/temp/superior6564App-master",
                      f"{common_path}/superior6564App")
-FaF.create_shortcut("superior6564App.lnk", "GeneratorRUWords.bat",
+FaF.create_shortcut("superior6564App.lnk", "superior6564App.bat",
                     "Photos_or_Icons/degget_6564_App.ico", f"{common_path}/superior6564App")
 FaF.create_shortcut("Update.lnk", f"Update.bat",
                     "Photos_or_Icons/degget_6564_Updater.ico", f"{common_path}/superior6564App")

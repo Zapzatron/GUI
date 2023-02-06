@@ -50,27 +50,24 @@ def install_package(package_input: str, output: bool = True):
 def check_req_packages():
     print(f"---------------------------")
     print(f"Checking required packages.")
-    req_path = "Update/Requirements/requirements.txt"
     # install_packages = subprocess.run([sys.executable, "-m", "pip", "install", "-r", req_file], capture_output=True, text=True)
     # print(install_packages.stdout)
-    with open(req_path, "r") as req_file:
-        for package_input in req_file:
-            if package_input[-1] == "\n":
-                package_input = package_input[:-1]
-            package = package_input.split("==")
-            show_package = subprocess.run([sys.executable, "-m", "pip", "show", package[0]],
-                                          capture_output=True, text=True)
-            if show_package.stderr.split('\n')[0][:30] != "WARNING: Package(s) not found:":
-                version_now = show_package.stdout.split("\n")[1][9:]
-                version_need = package[1]
-                if version_now == version_need:
-                    print(f"Version for {package[0]} is ok :)")
-                elif version_now != version_need:
-                    print(f"Version for {package[0]} is not ok :(")
-                    install_package(package_input)
-            else:
-                print(f"{package[0]} not found :(")
+    requirements = ["requests==2.28.1", "winshell==0.6", "PyWin32==305"]
+    for package_input in requirements:
+        package = package_input.split("==")
+        show_package = subprocess.run([sys.executable, "-m", "pip", "show", package[0]],
+                                      capture_output=True, text=True)
+        if show_package.stderr.split('\n')[0][:30] != "WARNING: Package(s) not found:":
+            version_now = show_package.stdout.split("\n")[1][9:]
+            version_need = package[1]
+            if version_now == version_need:
+                print(f"Version for {package[0]} is ok :)")
+            elif version_now != version_need:
+                print(f"Version for {package[0]} is not ok :(")
                 install_package(package_input)
+        else:
+            print(f"{package[0]} not found :(")
+            install_package(package_input)
     # print("Process...")
     # print(install_packages.stderr)
     print(f"Required packages checked.")

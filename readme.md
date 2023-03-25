@@ -8,7 +8,7 @@ Download-URL: https://github.com/Superior-GitHub/superior6564App/archive/refs/he
 
 Author: Superior_6564
 
-Author-email: 1327secret1327@gmail.com
+Author-email: degget6564business@gmail.com
 
 License: MIT License, see LICENSE file
 

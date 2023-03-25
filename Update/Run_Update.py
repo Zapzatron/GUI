@@ -17,7 +17,7 @@ print("Deleting previous application.")
 FaF.clear_folder(f"{common_path}/temp")  # Очистка папки временного хранения
 FaF.delete_file(f"{winshell.desktop()}/superior6564App.lnk", )  # Удаление ярлыка приложения
 FaF.delete_file(f"{winshell.desktop()}/Update.lnk", )  # Удаление ярлыка обновления приложения
-FaF.delete_zip("superior6564App.zip") # Удаление прошлого zip, нужного для установки
+FaF.delete_zip("superior6564App.zip")  # Удаление прошлого zip, нужного для установки
 FaF.get_zip("superior6564App.zip", "https://github.com/Superior-GitHub/superior6564App/archive/refs/heads/master.zip")  # Получение нового zip
 FaF.extract_zip("superior6564App.zip", os.getcwd(), f"{common_path}/temp")  # Распаковка zip в папку временного хранения
 temp_path = f"{common_path}/temp/superior6564App-master"

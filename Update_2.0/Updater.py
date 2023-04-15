@@ -19,4 +19,4 @@ FaF.create_shortcut("superior6564App.lnk", "superior6564App.bat",
 FaF.create_shortcut("Update_2.0.lnk", f"Update_2.0.bat",
                     "Photos_or_Icons/degget_6564_Updater.ico", f"{path_app}/superior6564App")
 
-subprocess.Popen(f"{path_app}/superior6564App/Python3109/python.exe {path_app}/superior6564App/Update_2.0/Clear_Temp.py")
+subprocess.Popen(f"start {path_app}/superior6564App/Python3109/pythonw.exe {path_app}/superior6564App/Update_2.0/Clear_Temp.py")

@@ -6,12 +6,13 @@ Packages.try_import()  # Проверка импортов
 
 import Folders_and_Files as FaF
 import subprocess
-
+import time
 
 with open("C:/superior6564/path_app.txt", "r") as path_file:
     path_app = path_file.readline()
 
 FaF.clear_folder(f"{path_app}/superior6564App")
+time.sleep(5)
 FaF.copy_folder_file(f"{path_app}/temp/superior6564App-master",
                      f"{path_app}/superior6564App")
 FaF.create_shortcut("superior6564App.lnk", "superior6564App.bat",

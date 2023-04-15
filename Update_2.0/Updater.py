@@ -14,8 +14,7 @@ with open("C:/superior6564/path_app.txt", "r") as path_file:
 FaF.clear_folder(f"{path_app}/superior6564App")
 time.sleep(5)
 FaF.copy_folder_file(f"{path_app}/temp/superior6564App-master",
-                     f"{path_app}/superior6564App",
-                     ["Python3109"])
+                     f"{path_app}/superior6564App")
 FaF.create_shortcut("superior6564App.lnk", "superior6564App.bat",
                     "Photos_or_Icons/degget_6564_App.ico", f"{path_app}/superior6564App")
 FaF.create_shortcut("Update_2.0.lnk", f"Update_2.0.bat",

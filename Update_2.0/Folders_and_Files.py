@@ -40,7 +40,8 @@ def copy_folder_file(path_from, path_to, black_list: list = [], symlinks=False, 
                 copy_folder_file(s, d, black_list, symlinks, ignore)
             else:
                 if item == "Python3109.zip":
-                    extract_zip(item, path_from, path_to)
+                    # extract_zip(item, path_from, path_to)
+                    pass
                 else:
                     if not os.path.exists(d) or os.stat(s).st_mtime - os.stat(d).st_mtime > 1:
                         shutil.copy2(s, d)

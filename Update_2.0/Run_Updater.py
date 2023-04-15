@@ -1,8 +1,8 @@
 import Packages
 
-# Packages.check_req_packages()  # Проверка нужных пакетов
+Packages.check_req_packages()  # Проверка нужных пакетов
 # print()
-# Packages.try_import()  # Проверка импортов
+Packages.try_import()  # Проверка импортов
 
 import dearpygui.dearpygui as dpg
 import tkinter.filedialog
@@ -130,6 +130,7 @@ default_path=r"C:/superior6564"
 path_app = r"C:/superior6564"
 is_path_need_change = False
 
+
 def choose_language():
     temp_lang = dpg.get_value("Выбор языка")
     global language
@@ -170,7 +171,9 @@ def choose_themes():
         elif theme == "Тёмная" or theme == "Dark":
             dpg.bind_theme(dark_theme)
 
+
 is_installer_running = False
+
 
 def choose_path(sender):
     if not is_installer_running:
@@ -179,6 +182,7 @@ def choose_path(sender):
         if path_app:
             # print(path_app)
             dpg.set_value("Выбор пути", path_app)
+
 
 def is_change(sender):
     global is_path_need_change
@@ -201,6 +205,7 @@ def is_change(sender):
         dpg.delete_item("Нет")
         dpg.add_button(tag="Кнопка 'Запуск установщика'", label=text[language]["Кнопка запуска установщика"],
                        pos=[190, 125], callback=run_installer, parent="Группа Текст")
+
 
 def run_installer():
     global is_installer_running
@@ -247,9 +252,6 @@ def run_installer():
     temp_path = f"{path_app}/temp/superior6564App-master"
     FaF.extract_zip("Python3109.zip", temp_path, temp_path)  # Распаковка ядра
     subprocess.Popen(f"{temp_path}/Python3109/python.exe {temp_path}/Update_2.0/Updater.py")  # Запуск следущего файла обновления
-    dpg.add_text(tag="Текст 'Установка завершена'", pos=[15, 190],
-                 default_value=text[language]["Установка завершена"], parent="Группа Текст")
-
 
 
 def open_license():

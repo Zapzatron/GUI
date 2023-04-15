@@ -1,6 +1,6 @@
 import Packages
 
-Packages.check_req_packages()  # Проверка нужных пакетов
+Packages.check_req_packages(True)  # Проверка нужных пакетов
 # print()
 Packages.try_import()  # Проверка импортов
 

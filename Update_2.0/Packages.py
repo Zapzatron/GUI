@@ -29,11 +29,12 @@ def install_package(package_input: str, output: bool = True):
                                                 capture_output=True, text=True)
 
 
-def check_req_packages():
-    message = "I need to check required packages.\nDo you agree to wait a little while?" \
-              "\nМне нужно проверить необходимые пакеты.\nВы согласны немного подождать?"
-    if not tkinter.messagebox.askyesno("Question from Installer", message):
-        exit()
+def check_req_packages(need_ask=False):
+    if need_ask:
+        message = "I need to check required packages.\nDo you agree to wait a little while?" \
+                  "\nМне нужно проверить необходимые пакеты.\nВы согласны немного подождать?"
+        if not tkinter.messagebox.askyesno("Question from Installer", message):
+            exit()
     requirements = ["requests==2.28.1", "winshell==0.6", "PyWin32==305", "dearpygui==1.7.1"]
     for package_input in requirements:
         package = package_input.split("==")

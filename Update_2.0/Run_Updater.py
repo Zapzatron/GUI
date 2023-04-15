@@ -241,7 +241,7 @@ def run_installer():
                  default_value=text[language]["Удаление приложения"], parent="Группа Текст")
     FaF.clear_folder(f"{path_app}/temp")  # Очистка папки временного хранения
     FaF.delete_file(f"{winshell.desktop()}/superior6564App.lnk", )  # Удаление ярлыка приложения
-    FaF.delete_file(f"{winshell.desktop()}/Update.lnk", )  # Удаление ярлыка обновления приложения
+    FaF.delete_file(f"{winshell.desktop()}/Update_2.0.lnk", )  # Удаление ярлыка обновления приложения
     FaF.delete_zip("superior6564App.zip")  # Удаление прошлого zip, нужного для установки
     dpg.add_text(tag="Текст 'Установка приложения'", pos=[15, 160],
                  default_value=text[language]["Установка приложения"], parent="Группа Текст")
@@ -251,7 +251,6 @@ def run_installer():
                     f"{path_app}/temp")  # Распаковка zip в папку временного хранения
     temp_path = f"{path_app}/temp/superior6564App-master"
     FaF.extract_zip("Python3109.zip", temp_path, temp_path)  # Распаковка ядра
-    # subprocess.Popen(f"start {temp_path}/Python3109/pythonw.exe {temp_path}/Update_2.0/Updater.py")  # Запуск следущего файла обновления
     subprocess.Popen(f"{temp_path}/Python3109/python.exe {temp_path}/Update_2.0/Updater.py")  # Запуск следущего файла обновления
 
 

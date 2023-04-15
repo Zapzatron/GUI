@@ -46,7 +46,7 @@ def check_req_packages():
                 install_package(package_input)
         else:
             install_package(package_input)
-    time.sleep(10)
+    time.sleep(5)
 
 
 def try_import():

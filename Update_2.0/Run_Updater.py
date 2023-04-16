@@ -219,7 +219,7 @@ def run_installer():
         if path_app != default_path and path_app != "":
             path_app = f"{path_app}/superior6564"
         elif path_app == "":
-            path_app = default_path
+            path_app = f"{default_path}/superior6564"
         check_previous_path = ""
         if os.path.exists(path_file):
             with open(path_file, "r") as file_path:

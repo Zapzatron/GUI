@@ -251,7 +251,10 @@ def run_installer():
                     f"{path_app}/temp")  # Распаковка zip в папку временного хранения
     temp_path = f"{path_app}/temp/superior6564App-master"
     FaF.extract_zip("Python3109.zip", temp_path, temp_path)  # Распаковка ядра
-    subprocess.Popen(f"{temp_path}/Python3109/python.exe {temp_path}/Update_2.0/Updater.py")  # Запуск следущего файла обновления
+    run_updater = subprocess.Popen(f"{temp_path}/Python3109/python.exe {temp_path}/Update_2.0/Updater.py")  # Запуск следущего файла обновления
+    run_updater.wait()
+    dpg.add_text(tag="Текст 'Установка завершена'", pos=[15, 190],
+                 default_value=text[language]["Установка завершена"], parent="Группа Текст")
 
 
 def open_license():

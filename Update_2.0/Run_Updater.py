@@ -227,7 +227,7 @@ def run_installer():
             if path_app != check_previous_path:
                 FaF.clear_folder(check_previous_path)
         with open(path_file, "w") as file_path:
-            file_path.write(check_previous_path + "\n" + path_app)
+            file_path.write(path_app + "\n" + path_app)
     else:
         if os.path.exists(path_file):
             with open(path_file, "r") as file_path:

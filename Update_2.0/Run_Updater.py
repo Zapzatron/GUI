@@ -210,6 +210,7 @@ def is_change(sender):
 def run_installer():
     global is_installer_running
     global path_app
+    path_app = dpg.get_value("Выбор пути")
     is_installer_running = True
     dpg.delete_item("Кнопка 'Запуск установщика'")
     path_file = "C:/superior6564/path_app.txt"

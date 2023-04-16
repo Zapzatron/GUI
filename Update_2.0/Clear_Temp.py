@@ -12,4 +12,4 @@ with open("C:/superior6564/path_app.txt", "r") as path_file:
 
 FaF.clear_folder(f"{path_app}/temp")
 time.sleep(5)
-print("Finish")
+# print("Finish")

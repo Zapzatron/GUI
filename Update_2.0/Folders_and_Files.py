@@ -25,9 +25,8 @@ def clear_folder(path, black_list: list = []):
             if os.path.isdir(s):
                 try:
                     shutil.rmtree(s)
-                except OSError as e:
+                except OSError:
                     print(traceback.print_exc())
-                    pass
             else:
                 os.remove(s)
 

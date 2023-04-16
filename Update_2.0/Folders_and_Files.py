@@ -3,6 +3,7 @@ import shutil
 import zipfile
 import requests
 import winshell
+import traceback
 import time
 import os
 
@@ -25,6 +26,7 @@ def clear_folder(path, black_list: list = []):
                 try:
                     shutil.rmtree(s)
                 except OSError as e:
+                    print(traceback.print_exc())
                     pass
             else:
                 os.remove(s)

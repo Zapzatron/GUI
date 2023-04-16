@@ -20,9 +20,9 @@ def clear_folder(path, black_list: list = []):
         os.makedirs(path)
     file_list = os.listdir(path)
     for item in file_list:
-        if item not in black_list:
-            if item == "Python3109":
-                print(path, item)
+        if item.basename() not in black_list:
+            if item == r"C:/superior6564/temp\\superior6564App-master\\Python3109":
+                print(path, item, black_list)
             s = os.path.join(path, item)
             if os.path.isdir(s):
                 try:

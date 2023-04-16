@@ -4,11 +4,10 @@ import time
 import tkinter.messagebox
 
 
-def install_package(package_input: str, output: bool = True):
+def install_package(package_input: str):
     """
     Args:
         package_input (str): Name of package.
-        output (bool): Info about process will be output or not.
     Description:
         package_input:
             You can download a specific version. \n

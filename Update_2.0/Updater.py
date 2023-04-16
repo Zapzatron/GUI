@@ -11,7 +11,7 @@ import time
 with open("C:/superior6564/path_app.txt", "r") as path_file:
     path_app = path_file.readline()
 
-FaF.clear_folder(f"{path_app}/superior6564App")
+FaF.clear_folder(f"{path_app}/superior6564App", ["Python3109"])
 time.sleep(5)
 FaF.copy_folder_file(f"{path_app}/temp/superior6564App-master",
                      f"{path_app}/superior6564App",

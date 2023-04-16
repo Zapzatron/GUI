@@ -14,19 +14,20 @@ def delete_folder(path):
         pass
 
 
-def clear_folder(path):
+def clear_folder(path, black_list: list = []):
     if not os.path.exists(path):
         os.makedirs(path)
     file_list = os.listdir(path)
     for item in file_list:
-        s = os.path.join(path, item)
-        if os.path.isdir(s):
-            try:
-                shutil.rmtree(s)
-            except OSError as e:
-                pass
-        else:
-            os.remove(s)
+        if item not in black_list:
+            s = os.path.join(path, item)
+            if os.path.isdir(s):
+                try:
+                    shutil.rmtree(s)
+                except OSError as e:
+                    pass
+            else:
+                os.remove(s)
 
 
 def copy_folder_file(path_from, path_to, black_list: list = [], symlinks=False, ignore=None):
@@ -39,7 +40,7 @@ def copy_folder_file(path_from, path_to, black_list: list = [], symlinks=False, 
             if os.path.isdir(s):
                 copy_folder_file(s, d, black_list, symlinks, ignore)
             else:
-                if item == "Python3109.zip":
+                if item == "Python3109.zip" and not os.path.exists(rf"{path_to}\Python3109"):
                     extract_zip(item, path_from, path_to)
                 else:
                     if not os.path.exists(d) or os.stat(s).st_mtime - os.stat(d).st_mtime > 1:

@@ -1,3 +1,4 @@
+print("Updater")
 import Packages
 
 Packages.check_req_packages()  # Проверка нужных пакетов

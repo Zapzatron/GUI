@@ -60,6 +60,7 @@ def try_import():
         import subprocess
         import winshell
         import tkinter.filedialog
+        import dearpygui.dearpygui as dpg
         from win32com.client import Dispatch
     except ModuleNotFoundError:
         message = "Required packages is not ok :(\n" \

@@ -21,6 +21,8 @@ def clear_folder(path, black_list: list = []):
     file_list = os.listdir(path)
     for item in file_list:
         if item not in black_list:
+            if item == black_list[0]:
+                print(path, item)
             s = os.path.join(path, item)
             if os.path.isdir(s):
                 try:

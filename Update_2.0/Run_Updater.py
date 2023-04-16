@@ -225,7 +225,7 @@ def run_installer():
             with open(path_file, "r") as file_path:
                 check_previous_path = file_path.readline()
             if path_app != check_previous_path:
-                FaF.clear_folder(f"{check_previous_path}/superior6564")
+                FaF.clear_folder(check_previous_path)
         with open(path_file, "w") as file_path:
             file_path.write(path_app)
     else:

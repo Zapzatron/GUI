@@ -223,7 +223,7 @@ def run_installer():
         check_previous_path = ""
         if os.path.exists(path_file):
             with open(path_file, "r") as file_path:
-                check_previous_path = file_path.readline()
+                check_previous_path = file_path.readline()[:-1]
             if path_app != check_previous_path:
                 FaF.clear_folder(check_previous_path)
         with open(path_file, "w") as file_path:
@@ -231,7 +231,7 @@ def run_installer():
     else:
         if os.path.exists(path_file):
             with open(path_file, "r") as file_path:
-                prev_path = file_path.readline()
+                prev_path = file_path.readline()[:-1]
                 path_app = prev_path
         else:
             path_app = default_path

@@ -9,7 +9,7 @@ import subprocess
 import time
 
 with open("C:/superior6564/path_app.txt", "r") as path_file:
-    prev_path_app = path_file.readline()
+    prev_path_app = path_file.readline()[:-1]
     path_app = path_file.readline()
 
 FaF.clear_folder(f"{path_app}/superior6564App", ["Python3109"])

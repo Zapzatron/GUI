@@ -22,5 +22,5 @@ FaF.create_shortcut("Zapzatron_GUI.lnk", "Zapzatron_GUI.bat",
 FaF.create_shortcut("Update_2.0.lnk", f"Update_2.0.bat",
                     "Photos_or_Icons/degget_6564_Updater.ico", f"{path_app}")
 
-run_cleaner = subprocess.Popen(f"{path_app}/Python3109/python.exe {path_app}/Update_2.0/Clear_Temp.py")
+run_cleaner = subprocess.Popen(f"{path_app}/GUI/Python3109/python.exe {path_app}/GUI/Update_2.0/Clear_Temp.py")
 run_cleaner.wait()

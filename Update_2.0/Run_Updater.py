@@ -218,11 +218,11 @@ def run_installer():
         os.makedirs("C:/Zapzatron")
     if is_path_need_change:
         if path_app != default_path and path_app != "":
-            path_app = f"{path_app}/Zapzatron_GUI"
+            path_app = f"{path_app}/Zapzatron"
         elif path_app == "":
-            path_app = f"{default_path}/Zapzatron_GUI"
+            path_app = f"{default_path}/Zapzatron"
         elif path_app == default_path:
-            path_app = f"{default_path}/Zapzatron_GUI"
+            path_app = f"{default_path}/Zapzatron"
         check_previous_path = ""
         if os.path.exists(path_file):
             with open(path_file, "r") as file_path:

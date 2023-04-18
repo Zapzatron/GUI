@@ -12,7 +12,7 @@ with open("C:/Zapzatron/path_app.txt", "r") as path_file:
     prev_path_app = path_file.readline()[:-1]
     path_app = path_file.readline()
 
-FaF.clear_folder(f"{path_app}/Zapzatron_GUI", ["Python3109"])
+FaF.clear_folder(f"{path_app}", ["Python3109"])
 time.sleep(5)
 FaF.copy_folder_file(f"{path_app}/temp/GUI-master",
                      f"{path_app}/GUI",

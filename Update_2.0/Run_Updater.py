@@ -108,7 +108,7 @@ text = {"Русский":
              "Удаление приложения": "Удаление предыдущего приложения.",
              "Установка приложения": "Установка нового приложения.",
              "Установка завершена": "Установка приложения завершена.",
-             "Лицензия": "Лицензия ---> https://github.com/Zapzatron/superior6564App/raw/master/LICENSES/LICENSE",
+             "Лицензия": "Лицензия ---> https://github.com/Zapzatron/GUI/raw/master/LICENSES/LICENSE",
              "Открытие лицензии": "Открыть лицензию"},
         "English":
             {"Вступление": "Hi, I'll install the app for you. But only if I have access to the Internet.\n"
@@ -123,11 +123,11 @@ text = {"Русский":
              "Удаление приложения": "Deleting previous application.",
              "Установка приложения": "Installing the new application.",
              "Установка завершена": "The installation of the application is complete.",
-             "Лицензия": "License ---> https://github.com/Zapzatron/superior6564App/raw/master/LICENSES/LICENSE",
+             "Лицензия": "License ---> https://github.com/Zapzatron/GUI/raw/master/LICENSES/LICENSE",
              "Открытие лицензии": "Open a license"}}
 
-default_path=r"C:/superior6564"
-path_app = r"C:/superior6564"
+default_path = r"C:/Zapzatron"
+path_app = r"C:/Zapzatron"
 is_path_need_change = False
 
 
@@ -213,16 +213,16 @@ def run_installer():
     path_app = dpg.get_value("Выбор пути")
     is_installer_running = True
     dpg.delete_item("Кнопка 'Запуск установщика'")
-    path_file = "C:/superior6564/path_app.txt"
-    if not os.path.exists("C:/superior6564"):
-        os.makedirs("C:/superior6564")
+    path_file = "C:/Zapzatron/path_app.txt"
+    if not os.path.exists("C:/Zapzatron"):
+        os.makedirs("C:/Zapzatron")
     if is_path_need_change:
         if path_app != default_path and path_app != "":
-            path_app = f"{path_app}/superior6564"
+            path_app = f"{path_app}/Zapzatron_GUI"
         elif path_app == "":
-            path_app = f"{default_path}/superior6564"
+            path_app = f"{default_path}/Zapzatron_GUI"
         elif path_app == default_path:
-            path_app = f"{default_path}/superior6564"
+            path_app = f"{default_path}/Zapzatron_GUI"
         check_previous_path = ""
         if os.path.exists(path_file):
             with open(path_file, "r") as file_path:
@@ -245,16 +245,16 @@ def run_installer():
     dpg.add_text(tag="Текст 'Удаление приложения'", pos=[15, 130],
                  default_value=text[language]["Удаление приложения"], parent="Группа Текст")
     FaF.clear_folder(f"{path_app}/temp")  # Очистка папки временного хранения
-    FaF.delete_file(f"{winshell.desktop()}/superior6564App.lnk", )  # Удаление ярлыка приложения
+    FaF.delete_file(f"{winshell.desktop()}/Zapzatron_GUI.lnk", )  # Удаление ярлыка приложения
     FaF.delete_file(f"{winshell.desktop()}/Update_2.0.lnk", )  # Удаление ярлыка обновления приложения
-    FaF.delete_zip("superior6564App.zip")  # Удаление прошлого zip, нужного для установки
+    FaF.delete_zip("Zapzatron_GUI.zip")  # Удаление прошлого zip, нужного для установки
     dpg.add_text(tag="Текст 'Установка приложения'", pos=[15, 160],
                  default_value=text[language]["Установка приложения"], parent="Группа Текст")
-    FaF.get_zip("superior6564App.zip",
-                "https://github.com/Zapzatron/superior6564App/archive/refs/heads/master.zip")  # Получение нового zip
-    FaF.extract_zip("superior6564App.zip", os.getcwd(),
+    FaF.get_zip("Zapzatron_GUI.zip",
+                "https://github.com/Zapzatron/GUI/archive/refs/heads/master.zip")  # Получение нового zip
+    FaF.extract_zip("Zapzatron_GUI.zip", os.getcwd(),
                     f"{path_app}/temp")  # Распаковка zip в папку временного хранения
-    temp_path = f"{path_app}/temp/superior6564App-master"
+    temp_path = f"{path_app}/temp/GUI-master"
     FaF.extract_zip("Python3109.zip", temp_path, temp_path)  # Распаковка ядра
     run_updater = subprocess.Popen(f"{temp_path}/Python3109/python.exe {temp_path}/Update_2.0/Updater.py")  # Запуск следущего файла обновления
     run_updater.wait()
@@ -263,7 +263,7 @@ def run_installer():
 
 
 def open_license():
-    webbrowser.open_new_tab("https://github.com/Zapzatron/superior6564App/raw/master/LICENSES/LICENSE")
+    webbrowser.open_new_tab("https://github.com/Zapzatron/GUI/raw/master/LICENSES/LICENSE")
 
 
 with dpg.window(tag='Установщик', label="Окно 1", width=960, height=540, no_move=True,
@@ -291,7 +291,7 @@ dpg.bind_theme(bright_theme)
 dpg.set_primary_window("Установщик", True)
 dpg.show_item("Установщик")
 
-dpg.create_viewport(title='superior6564 installer', width=960, height=540, resizable=False)
+dpg.create_viewport(title='Zapzatron installer', width=960, height=540, resizable=False)
 dpg.setup_dearpygui()
 dpg.show_viewport()
 dpg.start_dearpygui()

@@ -8,19 +8,19 @@ import Folders_and_Files as FaF
 import subprocess
 import time
 
-with open("C:/superior6564/path_app.txt", "r") as path_file:
+with open("C:/Zapzatron/path_app.txt", "r") as path_file:
     prev_path_app = path_file.readline()[:-1]
     path_app = path_file.readline()
 
-FaF.clear_folder(f"{path_app}/superior6564App", ["Python3109"])
+FaF.clear_folder(f"{path_app}/Zapzatron_GUI", ["Python3109"])
 time.sleep(5)
-FaF.copy_folder_file(f"{path_app}/temp/superior6564App-master",
-                     f"{path_app}/superior6564App",
+FaF.copy_folder_file(f"{path_app}/temp/GUI-master",
+                     f"{path_app}/GUI",
                      ["Python3109"])
-FaF.create_shortcut("superior6564App.lnk", "superior6564App.bat",
-                    "Photos_or_Icons/degget_6564_App.ico", f"{path_app}/superior6564App")
+FaF.create_shortcut("Zapzatron_GUI.lnk", "Zapzatron_GUI.bat",
+                    "Photos_or_Icons/degget_6564_App.ico", f"{path_app}/Zapzatron_GUI")
 FaF.create_shortcut("Update_2.0.lnk", f"Update_2.0.bat",
-                    "Photos_or_Icons/degget_6564_Updater.ico", f"{path_app}/superior6564App")
+                    "Photos_or_Icons/degget_6564_Updater.ico", f"{path_app}/Zapzatron_GUI")
 
-run_cleaner = subprocess.Popen(f"{path_app}/superior6564App/Python3109/python.exe {path_app}/superior6564App/Update_2.0/Clear_Temp.py")
+run_cleaner = subprocess.Popen(f"{path_app}/Zapzatron_GUI/Python3109/python.exe {path_app}/Zapzatron_GUI/Update_2.0/Clear_Temp.py")
 run_cleaner.wait()

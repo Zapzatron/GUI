@@ -89,7 +89,7 @@ def delete_zip(file):
 
 
 def get_zip(file, url):
-    print("Getting zip of superior6564App.")
+    print("Getting zip of Zapzatron_GUI.")
     with open(file, "wb") as new_file:
         new_file.write(requests.get(url).content)
     time.sleep(1)

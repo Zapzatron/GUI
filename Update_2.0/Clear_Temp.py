@@ -7,10 +7,10 @@ Packages.try_import()  # Проверка импортов
 import Folders_and_Files as FaF
 import time
 
-with open("C:/superior6564/path_app.txt", "r") as path_file:
+with open("C:/Zapzatron/path_app.txt", "r") as path_file:
     prev_path_app = path_file.readline()[:-1]
     path_app = path_file.readline()
 
-FaF.clear_folder(f"{path_app}/temp/superior6564App-master", ["Python3109"])
+FaF.clear_folder(f"{path_app}/temp/GUI-master", ["Python3109"])
 time.sleep(5)
 # print("Finish")

@@ -108,7 +108,7 @@ text = {"Русский":
              "Удаление приложения": "Удаление предыдущего приложения.",
              "Установка приложения": "Установка нового приложения.",
              "Установка завершена": "Установка приложения завершена.",
-             "Лицензия": "Лицензия ---> https://github.com/Superior-GitHub/superior6564App/raw/master/LICENSES/LICENSE",
+             "Лицензия": "Лицензия ---> https://github.com/Zapzatron/superior6564App/raw/master/LICENSES/LICENSE",
              "Открытие лицензии": "Открыть лицензию"},
         "English":
             {"Вступление": "Hi, I'll install the app for you. But only if I have access to the Internet.\n"
@@ -123,7 +123,7 @@ text = {"Русский":
              "Удаление приложения": "Deleting previous application.",
              "Установка приложения": "Installing the new application.",
              "Установка завершена": "The installation of the application is complete.",
-             "Лицензия": "License ---> https://github.com/Superior-GitHub/superior6564App/raw/master/LICENSES/LICENSE",
+             "Лицензия": "License ---> https://github.com/Zapzatron/superior6564App/raw/master/LICENSES/LICENSE",
              "Открытие лицензии": "Open a license"}}
 
 default_path=r"C:/superior6564"
@@ -251,7 +251,7 @@ def run_installer():
     dpg.add_text(tag="Текст 'Установка приложения'", pos=[15, 160],
                  default_value=text[language]["Установка приложения"], parent="Группа Текст")
     FaF.get_zip("superior6564App.zip",
-                "https://github.com/Superior-GitHub/superior6564App/archive/refs/heads/master.zip")  # Получение нового zip
+                "https://github.com/Zapzatron/superior6564App/archive/refs/heads/master.zip")  # Получение нового zip
     FaF.extract_zip("superior6564App.zip", os.getcwd(),
                     f"{path_app}/temp")  # Распаковка zip в папку временного хранения
     temp_path = f"{path_app}/temp/superior6564App-master"
@@ -263,7 +263,7 @@ def run_installer():
 
 
 def open_license():
-    webbrowser.open_new_tab("https://github.com/Superior-GitHub/superior6564App/raw/master/LICENSES/LICENSE")
+    webbrowser.open_new_tab("https://github.com/Zapzatron/superior6564App/raw/master/LICENSES/LICENSE")
 
 
 with dpg.window(tag='Установщик', label="Окно 1", width=960, height=540, no_move=True,

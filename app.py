@@ -1,7 +1,6 @@
 """
-:authors: Superior_6564
 :license: MIT License
-:copyright: (c) 2022 Superior_6564
+:copyright: (c) 2022 Zapzatron
 
 MIT License
 Copyright (c) 2022 Dear PyGui, LLC
@@ -129,19 +128,19 @@ def run():
 
     files_data = [
         ["NotoSans-Regular.ttf",
-         "https://github.com/Superior-GitHub/superior6564App/raw/master/Fonts/NotoSans-Regular.ttf",
+         "https://github.com/Zapzatron/superior6564App/raw/master/Fonts/NotoSans-Regular.ttf",
          "Fonts"],
         ["russian_nouns.txt",
-         "https://github.com/Superior-GitHub/superior6564App/raw/master/Generator_dictionaries/russian_nouns.txt",
+         "https://github.com/Zapzatron/superior6564App/raw/master/Generator_dictionaries/russian_nouns.txt",
          "Generator_dictionaries"],
         ["russian_nouns_without_io.txt",
-         "https://github.com/Superior-GitHub/superior6564App/raw/master/Generator_dictionaries/russian_nouns_without_io.txt",
+         "https://github.com/Zapzatron/superior6564App/raw/master/Generator_dictionaries/russian_nouns_without_io.txt",
          "Generator_dictionaries"],
         ["degget_6564_App.jpg",
-         "https://github.com/Superior-GitHub/superior6564App/raw/master/Photos_or_Icons/degget_6564_App.jpg",
+         "https://github.com/Zapzatron/superior6564App/raw/master/Photos_or_Icons/degget_6564_App.jpg",
          "Photos_or_Icons"],
         ["readme.md",
-         "https://github.com/Superior-GitHub/superior6564App/raw/master/readme.md",
+         "https://github.com/Zapzatron/superior6564App/raw/master/readme.md",
          None]
     ]
 
@@ -361,7 +360,7 @@ def run():
         print_name_def("get_info()")
 
         def open_home_page():
-            webbrowser.open_new_tab("https://github.com/Superior-GitHub/superior6564App/tree/master")
+            webbrowser.open_new_tab("https://github.com/Zapzatron/superior6564App/tree/master")
 
         package_show = subprocess.run([sys.executable, "-m", "pip", "show", "Superior6564"], capture_output=True,
                                       text=True)

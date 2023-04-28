@@ -2,9 +2,9 @@
 
 Name: superior6564App
 
-Home-page: https://github.com/Superior-GitHub/superior6564App/tree/master
+Home-page: https://github.com/Zapzatron/GUI/tree/master
 
-Download-URL: https://github.com/Superior-GitHub/superior6564App/archive/refs/heads/master.zip
+Download-URL: https://github.com/Zapzatron/GUI/archive/refs/heads/master.zip
 
 Author: Superior_6564
 

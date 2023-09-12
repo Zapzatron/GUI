@@ -239,6 +239,7 @@ def run():
                 if is_app:
                     all_of_letters = to_cyr(all_of_letters)
                     dpg.delete_item("error_group", children_only=True)
+
                 if all_of_letters == "":
                     all_of_letters = "лупогр"
 
@@ -279,45 +280,91 @@ def run():
                 print(f"Letters: {all_of_letters}\nLength: {length_of_words}")
 
                 with open('Generator_dictionaries/russian_nouns_without_io.txt', encoding='utf-8') as f1:
-                    result = [f"Words from {length_of_words} letters:"]
+                    ru_gen_words_data = f1.read().split("\n")
+                    # print(ru_gen_words_data)
+                    result_display = f"Words from {length_of_words} word:"
                     count_words = 0
-                    line = ""
-                    while line != "-----":
-                        line = f1.readline()
-                        if "\n" in line:
-                            line = line[:-1]
-                        if len(line) == length_of_words and line != "" and line != "-----":
+                    for line in ru_gen_words_data:
+                        if len(line) == length_of_words and line != "":
                             count = 0
                             for letter in line:
                                 if letter in all_of_letters and line.count(letter) <= all_of_letters.count(letter):
                                     count += 1
-                            if count == length_of_words and line not in result:
-                                result.append(line)
-                    if is_app:
-                        dpg.delete_item('text_group', children_only=True)
-                        if len(result) == 1:
-                            dpg.add_text(pos=[8, 435], default_value=f"No words found.", parent='text_group')
-                        else:
-                            left_pos = 8
-                            right_pos = 440
-                            count = 0
-                            for line in result[1:]:
-                                count_words += 1
-                                dpg.add_text(pos=[left_pos, right_pos], default_value=f"{count_words} word: {line}", parent='text_group')
-                                right_pos += 20
-                                count += 1
-                                if count == 8:
-                                    count = 0
-                                    left_pos += 160
-                                    right_pos = 440
+
+                            if count == length_of_words:
+                                is_line_in_result = False
+                                for res_line in result_display.split("\n")[1:]:
+                                    if line == res_line[-length_of_words:]:
+                                        is_line_in_result = True
+                                        break
+                                if not is_line_in_result:
+                                    count_words += 1
+                                    result_display += f"\n{count_words} word: {line}"
+
+                    result_display = result_display.split('\n')
+
+                    dpg.delete_item('text_group', children_only=True)
+                    if len(result_display) == 1:
+                        dpg.add_text(pos=[8, 435], default_value=f"No words found.", parent='text_group')
                     else:
-                        for line in result:
-                            if line[:10] != "Words from":
-                                count_words += 1
-                                print(f"{count_words} word: {line}")
-                            else:
-                                print(line)
+                        # print(result_display)
+                        left_pos = 8
+                        right_pos = 440
+                        count = 0
+                        for line in result_display[1:]:
+                            # print(line)
+                            dpg.add_text(pos=[left_pos, right_pos], default_value=line,
+                                         parent='text_group')
+                            right_pos += 20
+                            count += 1
+                            if count == 8:
+                                count = 0
+                                left_pos += 160
+                                right_pos = 440
+
                     print(f"Count of words: {count_words}")
+
+                # with open('Generator_dictionaries/russian_nouns_without_io.txt', encoding='utf-8') as f1:
+                #     result = [f"Words from {length_of_words} letters:"]
+                #     count_words = 0
+                #     line = ""
+                #     while line != "-----":
+                #         line = f1.readline()
+                #         if "\n" in line:
+                #             line = line[:-1]
+                #         if len(line) == length_of_words and line != "" and line != "-----":
+                #             count = 0
+                #             for letter in line:
+                #                 if letter in all_of_letters and line.count(letter) <= all_of_letters.count(letter):
+                #                     count += 1
+                #             if count == length_of_words and line not in result:
+                #                 result.append(line)
+                #     if is_app:
+                #         dpg.delete_item('text_group', children_only=True)
+                #         if len(result) == 1:
+                #             dpg.add_text(pos=[8, 435], default_value=f"No words found.", parent='text_group')
+                #         else:
+                #             left_pos = 8
+                #             right_pos = 440
+                #             count = 0
+                #             for line in result[1:]:
+                #                 count_words += 1
+                #                 dpg.add_text(pos=[left_pos, right_pos], default_value=f"{count_words} word: {line}", parent='text_group')
+                #                 right_pos += 20
+                #                 count += 1
+                #                 if count == 8:
+                #                     count = 0
+                #                     left_pos += 160
+                #                     right_pos = 440
+                #     else:
+                #         for line in result:
+                #             if line[:10] != "Words from":
+                #                 count_words += 1
+                #                 print(f"{count_words} word: {line}")
+                #             else:
+                #                 print(line)
+                #     print(f"Count of words: {count_words}")
+
             print_name_def("generator_ru_words()")
             letters_get = dpg.get_value('Input all letters')
             length_get = dpg.get_value('Input length of words')

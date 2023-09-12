@@ -63,7 +63,7 @@ with dpg.theme() as bright_theme:
         dpg.add_theme_color(dpg.mvThemeCol_Button, (244, 244, 244), category=dpg.mvThemeCat_Core)
         dpg.add_theme_color(dpg.mvThemeCol_Text, (55, 55, 55), category=dpg.mvThemeCat_Core)
         dpg.add_theme_style(dpg.mvStyleVar_FrameBorderSize, category=dpg.mvThemeCat_Core)
-        dpg.add_theme_color(dpg.mvThemeCol_Border, value=(55, 55, 55),category=dpg.mvThemeCat_Core)
+        dpg.add_theme_color(dpg.mvThemeCol_Border, value=(55, 55, 55), category=dpg.mvThemeCat_Core)
         # Combo
         dpg.add_theme_color(dpg.mvThemeCol_PopupBg, (244, 244, 244), category=dpg.mvThemeCat_Core)
         dpg.add_theme_color(dpg.mvThemeCol_FrameBg, (244, 244, 244), category=dpg.mvThemeCat_Core)
@@ -79,7 +79,7 @@ with dpg.theme() as dark_theme:
         dpg.add_theme_color(dpg.mvThemeCol_Button, (55, 55, 55), category=dpg.mvThemeCat_Core)
         dpg.add_theme_color(dpg.mvThemeCol_Text, (244, 244, 244), category=dpg.mvThemeCat_Core)
         dpg.add_theme_style(dpg.mvStyleVar_FrameBorderSize, category=dpg.mvThemeCat_Core)
-        dpg.add_theme_color(dpg.mvThemeCol_Border, value=(244, 244, 244),category=dpg.mvThemeCat_Core)
+        dpg.add_theme_color(dpg.mvThemeCol_Border, value=(244, 244, 244), category=dpg.mvThemeCat_Core)
         # Combo
         dpg.add_theme_color(dpg.mvThemeCol_PopupBg, (55, 55, 55), category=dpg.mvThemeCat_Core)
         dpg.add_theme_color(dpg.mvThemeCol_FrameBg, (55, 55, 55), category=dpg.mvThemeCat_Core)
@@ -193,7 +193,8 @@ def is_change(sender):
         dpg.delete_item("Нет")
         dpg.add_text(tag="Текст 'Выбор пути'", pos=[15, 65], default_value=text[language]["Выбор пути"],
                      parent="Группа Текст")
-        dpg.add_input_text(tag="Выбор пути", width=480, height=300, pos=[15, 95], default_value=path_app, parent="Группа Текст")
+        dpg.add_input_text(tag="Выбор пути", width=480, height=300, pos=[15, 95], default_value=path_app,
+                           parent="Группа Текст")
         dpg.add_button(tag="Кнопка 'Выбор пути'", label=text[language]["Кнопка выбора пути"], pos=[500, 95],
                        callback=choose_path, parent="Группа Текст")
         dpg.add_button(tag="Кнопка 'Запуск установщика'", label=text[language]["Кнопка запуска установщика"],
@@ -256,7 +257,8 @@ def run_installer():
                     f"{path_app}/temp")  # Распаковка zip в папку временного хранения
     temp_path = f"{path_app}/temp/GUI-master"
     FaF.extract_zip("Python3109.zip", temp_path, temp_path)  # Распаковка ядра
-    run_updater = subprocess.Popen(f"{temp_path}/Python3109/python.exe {temp_path}/Update_2.0/Updater.py")  # Запуск следущего файла обновления
+    run_updater = subprocess.Popen(
+        f"{temp_path}/Python3109/python.exe {temp_path}/Update_2.0/Updater.py")  # Запуск следущего файла обновления
     run_updater.wait()
     dpg.add_text(tag="Текст 'Установка завершена'", pos=[15, 190],
                  default_value=text[language]["Установка завершена"], parent="Группа Текст")
@@ -272,17 +274,21 @@ with dpg.window(tag='Установщик', label="Окно 1", width=960, heigh
     dpg.add_combo(tag="Выбор языка", width=120, pos=[810, 15], default_value=combo_languages[0],
                   items=combo_languages, callback=choose_language)
     dpg.add_combo(tag="Выбор темы", width=120, pos=[810, 45], default_value=combo_themes[language][theme],
-                 items=combo_themes_list[language], callback=choose_themes)
-    dpg.add_text(tag="Текст 'Вступление'", pos=[15, 5], default_value=text[language]["Вступление"], parent="Группа Текст")
-    dpg.add_text(tag="Текст 'Вопрос о смене пути'", pos=[15, 65], default_value=text[language]["Вопрос о смене пути"], parent="Группа Текст")
+                  items=combo_themes_list[language], callback=choose_themes)
+    dpg.add_text(tag="Текст 'Вступление'", pos=[15, 5], default_value=text[language]["Вступление"],
+                 parent="Группа Текст")
+    dpg.add_text(tag="Текст 'Вопрос о смене пути'", pos=[15, 65], default_value=text[language]["Вопрос о смене пути"],
+                 parent="Группа Текст")
     dpg.add_button(tag="Да", label=text[language]["Да"], pos=[100, 95], callback=is_change, parent="Группа Текст")
     dpg.add_button(tag="Нет", label=text[language]["Нет"], pos=[200, 95], callback=is_change, parent="Группа Текст")
     # dpg.add_text(tag="Текст 'Выбор пути'", pos=[15, 65], default_value=text[language]["Выбор пути"], parent="Группа Текст")
     # dpg.add_input_text(tag="Выбор пути", width=480, height=300, pos=[15, 95], default_value=path_app)
     # dpg.add_button(tag="Кнопка 'Выбор пути'", label=text[language]["Кнопка выбора пути"], pos=[500, 95], callback=choose_path)
     # dpg.add_button(tag="Кнопка 'Запуск установщика'", label=text[language]["Кнопка запуска установщика"], pos=[190, 125], callback=run_installer, parent="Группа Текст")
-    dpg.add_text(tag="Текст 'Лицензия'", pos=[120, 435], default_value=text[language]["Лицензия"], parent="Группа Текст")
-    dpg.add_button(tag="Кнопка 'Открытие лицензии'", label=text[language]["Открытие лицензии"], pos=[390, 460], callback=open_license)
+    dpg.add_text(tag="Текст 'Лицензия'", pos=[120, 435], default_value=text[language]["Лицензия"],
+                 parent="Группа Текст")
+    dpg.add_button(tag="Кнопка 'Открытие лицензии'", label=text[language]["Открытие лицензии"], pos=[390, 460],
+                   callback=open_license)
     with dpg.group(tag="Группа Текст"):
         pass
 

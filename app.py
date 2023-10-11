@@ -409,20 +409,36 @@ def run():
         def open_home_page():
             webbrowser.open_new_tab("https://github.com/Zapzatron/GUI/tree/master")
 
-        package_show = subprocess.run([sys.executable, "-m", "pip", "show", "Superior6564"], capture_output=True,
-                                      text=True)
-        if package_show.stderr.split('\n')[0][:30] != "WARNING: Package(s) not found:":
-            lines = package_show.stdout.split('\n')
-            dpg.add_text(tag="Name", pos=[5, 45], default_value=lines[0], parent="info_group")
-            dpg.add_text(tag="Version", pos=[5, 70], default_value=lines[1], parent="info_group")
-            dpg.add_text(tag="Home-Page", pos=[5, 95], default_value=lines[3][:10], parent="info_group")
-            dpg.add_text(tag="Author", pos=[5, 120], default_value=lines[4], parent="info_group")
-            dpg.add_text(tag="Author-email", pos=[5, 145], default_value="Email:" + lines[5][13:], parent="info_group")
-            dpg.add_text(tag="License", pos=[5, 170], default_value=lines[6][:-18], parent="info_group")
-            dpg.add_button(tag="Open Home-Page", label="Open", callback=open_home_page, pos=[100, 95],
-                           parent="info_group")
-        else:
-            print("Before you can get info about the package, you have to download it.")
+        def open_tg_bot():
+            webbrowser.open_new_tab("https://t.me/Zapzatron_Bot")
+
+        def open_license():
+            webbrowser.open_new_tab("https://github.com/Zapzatron/GUI/raw/master/LICENSES/LICENSE")
+
+        dpg.add_text(tag="Information", pos=[5, 20], default_value="Information:")
+        dpg.add_text(tag="Home-Page", pos=[5, 45], default_value="Home-Page:", parent="info_group")
+        dpg.add_button(tag="Open Home-Page", label="Open", callback=open_home_page, pos=[100, 45], parent="info_group")
+        dpg.add_text(tag="TG Bot", pos=[5, 70], default_value="TG Bot:", parent="info_group")
+        dpg.add_button(tag="Open TG Bot", label="Open", callback=open_tg_bot, pos=[100, 70], parent="info_group")
+        dpg.add_text(tag="License", pos=[5, 95], default_value="License:", parent="info_group")
+        dpg.add_button(tag="Open License", label="Open", callback=open_license, pos=[100, 95],
+                       parent="info_group")
+
+        # package_show = subprocess.run([sys.executable, "-m", "pip", "show", "Superior6564"], capture_output=True,
+        #                               text=True)
+        #
+        # if package_show.stderr.split('\n')[0][:30] != "WARNING: Package(s) not found:":
+        #     lines = package_show.stdout.split('\n')
+        #     dpg.add_text(tag="Name", pos=[5, 45], default_value=lines[0], parent="info_group")
+        #     dpg.add_text(tag="Version", pos=[5, 70], default_value=lines[1], parent="info_group")
+        #     dpg.add_text(tag="Home-Page", pos=[5, 95], default_value=lines[3][:10], parent="info_group")
+        #     dpg.add_text(tag="Author", pos=[5, 120], default_value=lines[4], parent="info_group")
+        #     dpg.add_text(tag="Author-email", pos=[5, 145], default_value="Email:" + lines[5][13:], parent="info_group")
+        #     dpg.add_text(tag="License", pos=[5, 170], default_value=lines[6][:-18], parent="info_group")
+        #     dpg.add_button(tag="Open Home-Page", label="Open", callback=open_home_page, pos=[100, 95],
+        #                    parent="info_group")
+        # else:
+        #     print("Before you can get info about the package, you have to download it.")
 
     def install_package_app():
         print_name_def("install_package()")
@@ -487,7 +503,7 @@ def run():
 
     with dpg.window(tag='main_window', label="Main", width=820, height=655, no_move=True, no_resize=True,
                     no_close=True, no_collapse=True):
-        dpg.add_text(tag="Information", pos=[5, 20], default_value="Information:")
+        # dpg.add_text(tag="Information", pos=[5, 20], default_value="Information:")
         dpg.draw_line(p1=(270, -10), p2=(270, 382), parent="info_group")
         dpg.draw_line(p1=(-10, 180), p2=(270, 180), parent="info_group")
         # dpg.add_button(tag="Button for showing info", label="Show info", callback=get_info, pos=[190, 20], parent="info_group")

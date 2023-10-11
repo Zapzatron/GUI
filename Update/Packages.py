@@ -9,7 +9,7 @@ def kill_process(seconds):
     for i in range(seconds):
         print(f"Installer will close in {seconds - i} seconds.")
         time.sleep(1)
-    exit()
+    sys.exit(-1)
 
 
 def install_package(package_input: str, output: bool = True):

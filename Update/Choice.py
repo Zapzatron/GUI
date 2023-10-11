@@ -1,6 +1,7 @@
 # print("Import Choice")
 import os
 import tkinter.filedialog
+import sys
 import Folders_and_Files as FaF
 
 
@@ -12,7 +13,7 @@ def agree_for_run():
         if agree == "":
             break
         if agree == "exit":
-            exit()
+            sys.exit(-1)
 
 
 def get_path_for_app(default_path="C:/Zapzatron", app_path="C:/Zapzatron/path_app.txt"):

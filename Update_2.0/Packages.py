@@ -21,7 +21,7 @@ def install_package(package_input: str):
         message = "Required packages is not ok :(\n" \
                   "Требуемые пакеты не в порядке :("
         tkinter.messagebox.showerror("Error", message)
-        exit()
+        sys.exit(-1)
     else:
         if len(package) != 2:
             upgrade_process = subprocess.run([sys.executable, "-m", "pip", "install", "--upgrade", package[0]],
@@ -33,7 +33,7 @@ def check_req_packages(need_ask=False):
         message = "I need to check required packages.\nDo you agree to wait a little while?" \
                   "\nМне нужно проверить необходимые пакеты.\nВы согласны немного подождать?"
         if not tkinter.messagebox.askyesno("Question from Installer", message):
-            exit()
+            sys.exit(-1)
     requirements = ["requests==2.28.1", "winshell==0.6", "PyWin32==305", "dearpygui==1.7.1"]
     for package_input in requirements:
         package = package_input.split("==")
@@ -65,4 +65,4 @@ def try_import():
         message = "Required packages is not ok :(\n" \
                   "Требуемые пакеты не в порядке :("
         tkinter.messagebox.showerror("Error", message)
-        exit()
+        sys.exit(-1)

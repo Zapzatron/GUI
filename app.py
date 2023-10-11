@@ -24,7 +24,8 @@ def run():
         for i in range(seconds):
             print(f"This app will close in {seconds - i} seconds.")
             time.sleep(1)
-        exit()
+        # exit()
+        sys.exit(-1)
 
     def check_internet():
         try:
@@ -47,7 +48,7 @@ def run():
                 print(f"{file} is not ok :( I will install this...")
                 if not (folder is None):
                     try:
-                        os.mkdir(folder)
+                        os.makedirs(folder)
                     except FileExistsError:
                         pass
                 with open(file_path, "wb") as new_file:
@@ -169,7 +170,6 @@ def run():
 
     import dearpygui.dearpygui as dpg
     import webbrowser
-    import os
 
     dpg.create_context()
 

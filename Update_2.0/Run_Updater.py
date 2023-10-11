@@ -220,9 +220,7 @@ def run_installer():
     if is_path_need_change:
         if path_app != default_path and path_app != "":
             path_app = f"{path_app}/Zapzatron"
-        elif path_app == "":
-            path_app = f"{default_path}/Zapzatron"
-        elif path_app == default_path:
+        elif path_app == "" or path_app == default_path:
             path_app = f"{default_path}/Zapzatron"
         check_previous_path = ""
         if os.path.exists(path_file):

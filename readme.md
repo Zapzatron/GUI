@@ -1,12 +1,12 @@
 ## Info
 
-Name: superior6564App
+Name: ZapzatronGUI
 
 Home-page: https://github.com/Zapzatron/GUI/tree/master
 
 Download-URL: https://github.com/Zapzatron/GUI/archive/refs/heads/master.zip
 
-Author: Superior_6564
+Author: Zapzatron
 
 Author-email: degget6564business@gmail.com
 

@@ -1,1 +1,0 @@
-Python3109\python.exe Update_Updater\Update_Updater.py

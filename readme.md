@@ -8,7 +8,7 @@ Download-URL: https://github.com/Zapzatron/GUI/archive/refs/heads/master.zip
 
 Author: Zapzatron
 
-Author-email: degget6564business@gmail.com
+Author-email: ...
 
 License: MIT License, see LICENSE file
 
